@@ -1,0 +1,197 @@
+@import "../../assets/scss/settings.scss";
+
+//  ========= UIkit ==========
+
+@import "../../uikit/elements/elements-page/elements-page.scss";
+@import "../../uikit/cards/cards-page/cards-page.scss";
+
+.main {
+  &__body {
+    display: flex;
+    padding-top: 100px;
+  }
+  &__sidebar {
+  }
+  &__content {
+    flex: 1 1 auto;
+  }
+  &__title {
+    margin-bottom: 20px;
+  }
+  &__cards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 20px 10px;
+    margin-bottom: 40px;
+  }
+  &__pagination {
+    display: flex;
+    justify-content: center;
+  }
+}
+
+.sidebar-body::-webkit-scrollbar {
+  width: 0;
+}
+.sidebar-body {
+  width: 326px;
+  padding-right: 60px;
+  background: #fff;
+  @include mb(30px);
+
+  &__slider {
+    .range-slider {
+      margin-bottom: 14px;
+    }
+    & p {
+      font-weight: 400;
+      font-size: 12px;
+      line-height: 14px;
+      color: $dark-50;
+    }
+  }
+  &__calendar {
+    position: relative;
+    height: 65.94px;
+
+    & .dropdown--menu-open {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 320px;
+    }
+  }
+}
+.icon-sidebar {
+  position: fixed;
+  top: 0;
+  left: 15px;
+  z-index: 100;
+  display: none;
+  width: 50px;
+  height: 70px;
+
+  &__body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50px;
+    height: 50px;
+  }
+  & svg {
+    width: 40px;
+    height: 40px;
+  }
+  & svg path,
+  & svg circle {
+    stroke: $primary-color;
+  }
+}
+
+@media (max-width: 1185px) {
+  .room-card.card {
+    flex: 0 1 49%;
+  }
+}
+@media (max-width: 992px) {
+  .sidebar-body {
+    position: fixed;
+    left: -100%;
+    top: 70px;
+    height: 100%;
+    z-index: 10;
+    padding: 30px 30px 350px 15px;
+    border-right: 1px solid $dark-50;
+    overflow-y: auto;
+    transition: all 0.2s ease 0s;
+    background: #fff;
+
+    & .air-datepicker-calendar__menu {
+      transform: scaleY(90%) translateY(-20px);
+    }
+
+    & .dropdown--menu-open {
+      width: 295px;
+    }
+  }
+  .icon-sidebar {
+    display: flex;
+    align-items: center;
+  }
+  .header {
+    &__body {
+      padding-left: 70px;
+    }
+    &__logo {
+      margin: 0 auto;
+    }
+  }
+
+  .room-card.card {
+    flex: 0 1 32%;
+  }
+  .main__title {
+    text-align: center;
+  }
+}
+
+@media (max-width: 867px) {
+  .room-card.card {
+    flex: 0 1 49%;
+  }
+}
+
+@media (max-width: 592px) {
+  .main__cards {
+    gap: none;
+  }
+  .room-card.card {
+    flex: 0 1 100%;
+  }
+}
+
+body.sidebar-left--open .sidebar-body {
+  left: 0;
+}
+body.sidebar-left--open .icon-sidebar {
+  &__body {
+    transform: rotate(90deg);
+    & svg path,
+    & svg circle {
+      stroke: $dark-75;
+    }
+  }
+}
+// body.sidebar-left--open .sidebar-body {
+//   position: relative;
+//   &::after {
+//     content: "";
+//     display: block;
+//     position: absolute;
+//     left: 0%;
+//     top: 0;
+//     width: 100%;
+//     height: 100%;
+//     z-index: 100;
+//     background: #000;
+//   }
+// }
+.main {
+  position: relative;
+}
+.mask-sidebar {
+  position: absolute;
+  // display: none;
+  left: 0;
+  top: 0;
+  width: 0%;
+  height: 100%;
+  z-index: 2;
+  transition: all 0s ease 0s;
+  background: rgba($color: #000, $alpha: 0.8);
+}
+body.sidebar-left--open .mask-sidebar {
+  width: 100%;
+  transition: all 0.4s ease 0s;
+}
